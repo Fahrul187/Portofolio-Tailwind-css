@@ -318,12 +318,12 @@ function Blog() {
 
 function Contact() {
     const [line, isTerlihat] = useInView({ threshold: 0.5 })
-    const form = useRef(); // <-- Buat ref untuk form
-    const [isSending, setIsSending] = useState(false); // Untuk status loading
+    const form = useRef()
+    const [isSending, setIsSending] = useState(false)
 
     const sendEmail = (e) => {
-        e.preventDefault(); // Mencegah halaman refresh
-        setIsSending(true); // Tombol loading
+        e.preventDefault()
+        setIsSending(true)
 
         emailjs.sendForm(
             import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -333,19 +333,19 @@ function Contact() {
         )
             .then(
                 (result) => {
-                    console.log('SUCCESS!', result.text);
-                    alert('Pesan berhasil terkirim!');
-                    form.current.reset(); // Mengosongkan form setelah terkirim
+                    console.log('SUCCESS!', result.text)
+                    alert('Pesan berhasil terkirim!')
+                    form.current.reset()
                 },
                 (error) => {
-                    console.log('FAILED...', error.text);
-                    alert('Gagal mengirim pesan, coba lagi.');
+                    console.log('FAILED...', error.text)
+                    alert('Gagal mengirim pesan, coba lagi.')
                 }
             )
             .finally(() => {
-                setIsSending(false); // Selesai loading
-            });
-    };
+                setIsSending(false)
+            })
+    }
     return (
         <section id="contact" className="place py-36">
             <div className="max-w-xl mx-auto text-center mb-16">
@@ -359,7 +359,7 @@ function Contact() {
             <div className="gap-16 md:grid-cols-2 grid">
                 <div className="self-center">
                     <div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-6">Let's Connect</h3>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-5">Let's Connect</h3>
                         <p className="text-gray-600 mb-8 leading-relaxed">
                             I'm always interested in new opportunities and exciting projects.
                             Whether you need a website, web application, or just want to chat about tech,
@@ -369,36 +369,33 @@ function Contact() {
 
 
                     <div className="space-y-4">
-                        <div>
-                            <div className="flex items-center">
-                                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail text-indigo-600"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Email</p>
-                                    <p className="text-gray-600">john.doe@example.com</p>
-                                </div>
+                        <div className="flex items-center">
+                            <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail text-indigo-600"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                             </div>
-                            <div className="flex items-center">
-                                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone text-indigo-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Phone</p>
-                                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center">
-                                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-map-pin text-indigo-600"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx={12} cy={10} r={3} /></svg>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-800">Location</p>
-                                    <p className="text-gray-600">San Francisco, CA</p>
-                                </div>
+                            <div>
+                                <p className="font-semibold text-gray-800">Email</p>
+                                <p className="text-gray-600">john.doe@example.com</p>
                             </div>
                         </div>
-
+                        <div className="flex items-center">
+                            <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone text-indigo-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                            </div>
+                            <div>
+                                <p className="font-semibold text-gray-800">Phone</p>
+                                <p className="text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div className="flex items-center">
+                            <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-map-pin text-indigo-600"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx={12} cy={10} r={3} /></svg>
+                            </div>
+                            <div>
+                                <p className="font-semibold text-gray-800">Location</p>
+                                <p className="text-gray-600">San Francisco, CA</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex space-x-4 mt-8">
@@ -412,31 +409,23 @@ function Contact() {
                             <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" /></svg>
                         </a>
                     </div>
-
                 </div>
 
-                {/* form */}
-
-                <div className=" self-center ">
-                    {/* Tambahkan ref dan onSubmit ke tag <form> */}
+                <div className="">
                     <form ref={form} onSubmit={sendEmail} className="space-y-8">
                         <div className="">
                             <label htmlFor="name" className="text-base font-bold text-primary">Nama</label>
-                            {/* Tambahkan attribute 'name' agar sesuai dengan template */}
                             <input type="text" id="name" name="name" className="text-dark p-3 rounded-md focus:outline-none w-full bg-slate-200 focus:ring-primary focus:ring-1 focus:border-primary" required />
                         </div>
                         <div className="">
                             <label htmlFor="email" className="text-base font-bold text-primary">Email</label>
-                            {/* Tambahkan attribute 'name' */}
                             <input type="email" id="email" name="email" className="text-dark p-3 rounded-md focus:outline-none w-full bg-slate-200 focus:ring-primary focus:ring-1 focus:border-primary" required />
                         </div>
                         <div className="">
                             <label htmlFor="message" className="text-base font-bold text-primary">pesan</label>
-                            {/* Tambahkan attribute 'name' dan perbaiki id */}
                             <textarea id="message" name="message" className="text-dark p-3 rounded-md focus:outline-none w-full bg-slate-200 focus:ring-primary focus:ring-1 focus:border-primary" required></textarea>
                         </div>
                         <div className="w-full">
-                            {/* Tambahkan status loading di tombol */}
                             <button type="submit" disabled={isSending} className="text-base font-semibold bg-primary text-white py-3 px-8 w-full rounded-full hover:shadow-lg transition-all duration-500 disabled:opacity-50">
                                 {isSending ? 'Mengirim...' : 'kirim'}
                             </button>
