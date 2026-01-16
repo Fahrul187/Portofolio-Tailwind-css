@@ -53,7 +53,7 @@ function Navbar() {
             <header className="place flex justify-between">
                 <h1 className="text-xl leading-9 font-medium">Brrads</h1>
                 <div ref={menuRef} className="flex">
-                    <button onClick={() => setIsOpen(v => !v)} aria-expanded={isOpen} aria-label={isOpen ? 'Tutup menu' : 'Buka menu'} className="md:hidden hover:cursor-pointer" >
+                    <button onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-label={isOpen ? 'Tutup menu' : 'Buka menu'} className="md:hidden hover:cursor-pointer" >
                         <span className={`${isOpen ? 'rotate-43 origin-top-left' : ''} transition-all duration-400 ease-in-out w-[30px] h-0.5 my-2 block bg-dark`}></span>
                         <span className={`${isOpen ? 'opacity-0' : 'opacity-100'} transition-all duration-400 ease-in-out w-5 h-0.5 my-2 block bg-dark`}></span>
                         <span className={`${isOpen ? '-rotate-43 origin-bottom-left w-[30px]' : 'w-2.5'} transition-all duration-400 ease-in-out  h-0.5 my-2 block bg-dark`}></span>
